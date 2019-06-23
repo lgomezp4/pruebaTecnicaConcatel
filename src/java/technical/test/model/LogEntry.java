@@ -16,6 +16,12 @@ public class LogEntry {
     public LogEntry() {
     }
 
+    public LogEntry(Rebel rebel, Planet planet) {
+        this.rebel = rebel;
+        this.planet = planet;
+        //this.date = new DateTime
+    }
+    
     public LogEntry(Rebel rebel, Planet planet, Date date) {
         this.rebel = rebel;
         this.planet = planet;
