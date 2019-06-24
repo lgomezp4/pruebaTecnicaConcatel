@@ -9,7 +9,7 @@ CREATE DATABASE BackEndExam3
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-GRANT SELECT, INSERT, UPDATE, DELETE  PRIVILEGES ON BackEndExam3.* TO 'testuser'@'localhost';  
+GRANT SELECT, INSERT, UPDATE, DELETE ON BackEndExam3.* TO 'testuser'@'localhost';  
 
 USE BackEndExam3;
 
@@ -17,5 +17,5 @@ CREATE TABLE logEntry (
     id INTEGER PRIMARY KEY auto_increment,
     name VARCHAR(50) NOT NULL,
     planet VARCHAR(50) NOT NULL,
-    datetime DATETIME NOT NULL     
+    datetime TIMESTAMP NOT NULL     
 ) ENGINE=InnoDb;

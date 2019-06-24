@@ -1,5 +1,6 @@
 package technical.test.model.persist;
 
+import java.sql.ResultSet;
 import technical.test.model.LogEntry;
 
 /**
@@ -7,8 +8,7 @@ import technical.test.model.LogEntry;
  * @author Luis Gómez
  */
 public interface LogEntryDAOInterface {
+     
+    int register(LogEntry logEntry);
     
-    LogEntry selectById(int id);
-    
-    boolean register(LogEntry logEntry);
 }

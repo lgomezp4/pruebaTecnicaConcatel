@@ -13,9 +13,9 @@ public class DbConnect {
 
     private static DbConnect instance;
     private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String BD_URL = "jdbc:mysql://" + "localhost:3306/BackEndExam3";
-    private final String USUARI = "testuser";
-    private final String PASSWORD = "testpsw";
+    private final String BD_URL = "jdbc:mysql://" + "127.0.0.1/BackEndExam3";
+    private final String USER = "testuser";
+    private final String PASS = "testpsw";
 
     /**
      * Singleton constructor.
@@ -49,8 +49,8 @@ public class DbConnect {
     public Connection getConnection() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(BD_URL, USUARI, PASSWORD);
-        } catch (SQLException e) {
+            conn = DriverManager.getConnection(BD_URL, USER, PASS);
+        } catch (SQLException e) {           
             conn = null;
         }
         return conn;

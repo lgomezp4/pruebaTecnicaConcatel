@@ -1,6 +1,6 @@
 package technical.test.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -11,7 +11,7 @@ public class LogEntry {
     
     private Rebel rebel;
     private Planet planet;
-    private Date date;
+    private Timestamp date;
 
     public LogEntry() {
     }
@@ -22,7 +22,7 @@ public class LogEntry {
         //this.date = new DateTime
     }
     
-    public LogEntry(Rebel rebel, Planet planet, Date date) {
+    public LogEntry(Rebel rebel, Planet planet, Timestamp date) {
         this.rebel = rebel;
         this.planet = planet;
         this.date = date;
@@ -44,11 +44,11 @@ public class LogEntry {
         this.planet = planet;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
