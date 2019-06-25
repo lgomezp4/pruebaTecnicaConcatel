@@ -8,11 +8,12 @@ import java.util.Objects;
  * @author Luis Gómez
  */
 public class LogEntry {
-    
+    //attributes
     private Rebel rebel;
     private Planet planet;
     private Timestamp date;
 
+    //constructors
     public LogEntry() {
     }
 
@@ -28,6 +29,7 @@ public class LogEntry {
         this.date = date;
     }
 
+    //getters and setters
     public Rebel getRebel() {
         return rebel;
     }

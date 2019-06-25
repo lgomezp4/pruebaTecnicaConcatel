@@ -3,14 +3,15 @@ package technical.test.model.persist;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Database connection
  *
  * @author Luis Gómez
  */
-public class DbConnect {
-
+public class DbConnect extends Properties{
+   
     private static DbConnect instance;
     private final String DRIVER = "com.mysql.jdbc.Driver";
     private final String BD_URL = "jdbc:mysql://" + "127.0.0.1/BackEndExam3";
@@ -55,5 +56,5 @@ public class DbConnect {
         }
         return conn;
     }
-
+     
 }

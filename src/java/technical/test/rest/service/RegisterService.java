@@ -9,45 +9,61 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.core.MediaType;
 import technical.test.controller.MainController;
+import technical.test.exception.NullException;
+import technical.test.logger.LogType;
+import technical.test.logger.UtilLogger;
 
 /**
- *
- * @author super
+ * REST Web Service for register rebellious conquests.
+ * 
+ * @author Luis Gómez
  */
 @Path("/register")
 public class RegisterService {
-    
+
     private final MainController controller;
-    
+
     public RegisterService(@Context ServletContext context) {
-        if (context.getAttribute("controller") != null) {           
-            controller = (MainController) context.getAttribute("controller"); 
+        if (context.getAttribute("controller") != null) {
+            controller = (MainController) context.getAttribute("controller");
         } else {
-            controller = new MainController();           
+            controller = new MainController();
         }
     }
-    
+
     /**
-     * Add an alert
+     * Adds logEntry
      *
-     * @param name to add
-     * @param planet secure the method for logged in user
-     * @return Json with message and result code. Code: 1 OK,
-     * -1 Parameter error, -10 invalid token, -11 expired token, -12
-     * Error assigning token.
+     * @param name Rebel name
+     * @param planet Planet name
+     * @return true if logEntry is registered successfully, false in case of error. 
      */
     @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String registerRebelIdentification(@FormParam("name") String name, 
-            @FormParam("planet") String planet) {
+    public String registerRebelIdentification(@FormParam("name") String name,
+            @FormParam("planet") String planet) throws NullException {
         String result;
-        boolean success = controller.register(name, planet);
-        
-        if(success) result = "true";
-        else result = "false";
-        
+        UtilLogger.registerInfo(RegisterService.class, LogType.INFO,
+                "Start registerRebelIdentification function");
+        try {          
+            boolean success = controller.register(name, planet);           
+            if (success) {
+                result = "true";              
+            } else {
+                result = "false";
+            }
+        } catch (NullPointerException ex) {
+            result = "false";
+            throw new NullException(ex.getMessage());
+        } catch (IllegalStateException ex){
+            UtilLogger.registerInfo(RegisterService.class, LogType.ERROR,
+                ex.getMessage());
+            result = "false";
+        }
+        UtilLogger.registerInfo(RegisterService.class, LogType.INFO,
+                "Finalize registerRebelIdentification function");
         return result;
     }
 }

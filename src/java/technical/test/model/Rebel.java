@@ -7,17 +7,18 @@ import java.util.Objects;
  * @author Luis Gómez
  */
 public class Rebel {
-    
+    //attributes
     private String name;
 
+    //constructors
     public Rebel() {
     }
-
-    
+   
     public Rebel(String name) {
         this.name = name;
     }
 
+    //getters and setters
     public String getName() {
         return name;
     }

@@ -7,16 +7,18 @@ import java.util.Objects;
  * @author Luis Gómez
  */
 public class Planet {
-    
+    //attributes
     private String name;
 
+    //constructors
     public Planet() {
     }
-
+    
     public Planet(String name) {
         this.name = name;
     }
 
+    //getters and setters
     public String getName() {
         return name;
     }
